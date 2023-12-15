@@ -34,7 +34,7 @@ NewAsset::register($this);
         </div>
     </header>
 </div>
->
+
 <div>
     <?= $content ?>
 </div>
