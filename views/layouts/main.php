@@ -28,25 +28,37 @@ AppAsset::register($this);
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'Моя программа',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
+    $items = [
+        ['label' => 'Главная', 'url' => ['/site/index']],
+        ['label' => 'О нас', 'url' => ['/site/about']],
+        ['label' => 'Контакты', 'url' => ['/site/contact']],
+    ];
+    if (Yii::$app->user->isGuest){
+        $items[]= ['label' => 'Login', 'url' => ['/site/login']];
+        $items[]=['label' => 'Регистрация', 'url' => ['/site/registration'];
+    } else {
+
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Главная', 'url' => ['/site/index']],
+            ['label' => 'О нас', 'url' => ['/site/about']],
+            ['label' => 'Контакты', 'url' => ['/site/contact']],
+            ['label' => 'Регистрация', 'url' => ['/site/registration']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Выход (' . Yii::$app->user->identity->login . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
