@@ -2,8 +2,10 @@
 
 namespace app\models;
 
+use app\repository\UserRepository;
 use Yii;
 use yii\base\Model;
+use yii\db\ActiveRecord;
 
 /**
  * LoginForm is the model behind the login form.
@@ -68,12 +70,12 @@ class LoginForm extends Model
     /**
      * Finds user by [[username]]
      *
-     * @return User|null
+     * @return Users|array|yii|db|ActiveRecord|null
      */
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByLogin($this->login);
+            $this->_user = UserRepository::getUserByLogin($this ->login);
         }
 
         return $this->_user;

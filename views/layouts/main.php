@@ -44,8 +44,8 @@ AppAsset::register($this);
         $items[] = ['label' => 'Авторизация', 'url' => ['/site/login']];
         $items[] = ['label' => 'Регистрация', 'url' => ['/site/registration']];
     } else{
-        $items[] = '<li class = "nav-item>"'
-            . HTml::beginForm(['/site/lagout'])
+        $items[] = '<li class = "nav-item">'
+            . HTml::beginForm(['/site/logout'])
             . Html::submitButton(
                     'Выход('. Yii::$app->user->identity->login . ')',
                 ['class'=>'nav-link btn btn-link logout']

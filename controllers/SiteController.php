@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\entity\Users;
 use app\models\RegistrationForm;
 use app\models\User;
 use app\repository\UserRepository;
@@ -109,7 +110,7 @@ class SiteController extends Controller
               $model -> login,
               $model -> password
             );
-            Yii::$app ->user->login(User::findIdentity($userId), 0);
+            Yii::$app ->user->login(Users::findIdentity($userId), 0);
             return $this->goBack();
         }
         return $this -> render('registration',[
