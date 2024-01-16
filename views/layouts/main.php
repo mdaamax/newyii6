@@ -51,7 +51,7 @@ AppAsset::register($this);
                 ['class'=>'nav-link btn btn-link logout']
             )
             . Html::endForm()
-            . '/li';
+            . '</li>';
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
